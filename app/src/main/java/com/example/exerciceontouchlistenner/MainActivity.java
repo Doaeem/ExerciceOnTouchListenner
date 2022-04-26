@@ -13,7 +13,7 @@ public class MainActivity extends AppCompatActivity {
     ImageView im;
     RadioGroup rg;
     float xInitial;
-    int[] mesImages = {R.drawable.img1, R.drawable.img2, R.drawable.img3};
+    int[] MesRds = {R.id.r1,R.id.r2,R.id.r3};
     int pos = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,9 +27,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
                 switch (rg.getCheckedRadioButtonId()){
-                    case R.id.r1: im.setImageResource(R.drawable.img1);break;
-                    case R.id.r2: im.setImageResource(R.drawable.img2);break;
-                    case R.id.r3: im.setImageResource(R.drawable.img3);break;
+                    case R.id.r1: im.setImageResource(R.drawable.img1); pos=0; break;
+                    case R.id.r2: im.setImageResource(R.drawable.img2); pos=1; break;
+                    case R.id.r3: im.setImageResource(R.drawable.img3); pos=2; break;
                 }
             }
         });
@@ -47,21 +47,16 @@ public class MainActivity extends AppCompatActivity {
                         float xFinal = motionEvent.getX();
 
                         if(xInitial<xFinal){
-                            pos--;
-                        }else
                             pos++;
+                        }else
+                            pos--;
 
                         if(pos<0)
-                            pos=0;
-                        else if(pos == mesImages.length)
-                            pos = mesImages.length-1;
-                    case MotionEvent.ACTION_MOVE:
-                        float x = motionEvent.getX();
-                        float y = motionEvent.getY();
+                            pos= MesRds.length-1;
+                        else if(pos >= MesRds.length)
+                            pos = 0;
 
-                        im.setImageResource(mesImages[pos]);
-                        im.setX(x);
-                        im.setY(y);
+                        rg.check(MesRds[pos]);
                         break;
                 }
                 return true;

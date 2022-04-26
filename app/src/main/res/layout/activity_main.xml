@@ -7,6 +7,11 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Selectionner une image : "
+        android:textSize="30dp" />
     <RadioGroup
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -27,14 +32,9 @@
             android:text="Image3"
             android:id="@+id/r3"/>
     </RadioGroup>
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
 
-        <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:src="@drawable/img1"
-            android:id="@+id/img"/>
-    </RelativeLayout>
+    <ImageView
+        android:id="@+id/img"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 </LinearLayout>
